@@ -48,7 +48,9 @@
             <a href="register.php" id="tabSignIn">Sign up</a>
         </nav>
     
-        <div class="alert hidden">That password was incorrect. Please try again</div>
+        <?php if (isset($error)): ?>
+            <div class="alert">That password was incorrect. Please try again</div>
+        <?php endif; ?>
     
         <div class="form form--login">
             <label for="username">Username</label>
