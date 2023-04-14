@@ -15,7 +15,7 @@
 
 <div id="logSign">
     <form action="login.php" method="get">
-        <h1>Sign to FairlyPrompt</h1>
+        <h1>Log in to FairlyPrompt</h1>
         <nav class="nav--login">
             <a href="#" id="tabLogin">Log in</a>
             <a href="#" id="tabSignIn">Sign up</a>
