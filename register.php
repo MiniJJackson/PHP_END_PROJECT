@@ -17,8 +17,8 @@
     <form action="login.php" method="get">
         <h1>Sign to FairlyPrompt</h1>
         <nav class="nav--login">
-            <a href="#" id="tabLogin">Log in</a>
-            <a href="#" id="tabSignIn">Sign up</a>
+            <a href="login.php" id="tabLogin">Log in</a>
+            <a href="register.php" id="tabSignIn">Sign up</a>
         </nav>
     
         <div class="alert hidden">That password was incorrect. Please try again</div>
@@ -27,8 +27,8 @@
             <label for="username">Username</label>
             <input type="text" id="username" name="username">
 
-            <label for="username">Email</label>
-            <input type="email" id="username" name="email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
         
             <label for="password">Password</label>
             <input type="password" id="password" name="password">

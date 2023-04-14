@@ -1,4 +1,31 @@
-<!DOCTYPE html>
+<?php
+
+    function canLogin($username, $password){
+        if ($username === ninja && $email === ninja@ninja.be && $password === 1234){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    if (!empty($_POST)){
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        if (canLogin($username,$email, $password)){
+            //echo "You are logged in";
+            session_start();
+            $_SESSION['username'] = $username;
+        }
+        else{
+            //echo "You are not logged in";
+            $error = true;
+        }
+    }
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,8 +44,8 @@
     <form action="login.php" method="get">
         <h1>Log in to FairlyPrompt</h1>
         <nav class="nav--login">
-            <a href="#" id="tabLogin">Log in</a>
-            <a href="#" id="tabSignIn">Sign up</a>
+            <a href="login.php" id="tabLogin">Log in</a>
+            <a href="register.php" id="tabSignIn">Sign up</a>
         </nav>
     
         <div class="alert hidden">That password was incorrect. Please try again</div>
@@ -27,8 +54,8 @@
             <label for="username">Username</label>
             <input type="text" id="username" name="username">
 
-            <label for="username">Email</label>
-            <input type="email" id="username" name="email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
         
             <label for="password">Password</label>
             <input type="password" id="password" name="password">
