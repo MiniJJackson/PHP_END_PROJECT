@@ -1,4 +1,16 @@
-<!DOCTYPE html>
+<?php
+
+    if (!empty($_POST)){
+        $email = $_POST['username'];
+        $options = [
+            'cost' => 14,
+        ];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT, $options);
+        
+        //echo $password;
+    }
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,8 +26,8 @@
 </header>
 
 <div id="logSign">
-    <form action="login.php" method="post">
-        <h1>Sign to FairlyPrompt</h1>
+    <form action="register.php" method="post">
+        <h1>Sign uo for FairlyPrompt</h1>
         <nav class="nav--login">
             <a href="login.php" id="tabLogin">Log in</a>
             <a href="register.php" id="tabSignIn">Sign up</a>
@@ -32,11 +44,11 @@
             <input type="password" id="password" name="password">
         </div>
 
-        <?php if (isset($error)): ?>
-            <div class="alert">The details where incorrect. Please try again</div>
-        <?php endif; ?>
+        
+            <div class="alert hidden">The details where incorrect. Please try again</div>
+       
 
-        <input type="submit" class="btn" value="Log In">
+        <input type="submit" class="btn" value="Sign up">
     </form>
 </div>
 </body>

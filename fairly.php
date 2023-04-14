@@ -6,6 +6,6 @@
     }
     else{
         //echo "You are not logged in";
-        header("Location: login.php");
+        //header("Location: login.php");
     }
 ?>
