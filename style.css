@@ -1,3 +1,5 @@
+/******* BASICS *******/
+
 *{
     box-sizing: border-box;
 }
@@ -7,8 +9,19 @@ body{
     margin: 0;
     background-color: bisque;
 
-
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.hidden
+{
+  display: none;
+}
+
+/******* NAVIGATION *******/
+
+
+
+/******* LOGIN SCREEN  *******/
 
 #logSign{
     max-width: 500px;
@@ -17,3 +30,91 @@ body{
     padding: 1em;
     border-radius: 1em;
 }
+
+h1{
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.alert{
+    background-color: #EFEEF1;
+    border: 1px solid #E91C24;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    margin: 0.5em 0;
+}
+
+
+.nav--login
+{
+  padding: 0.3em;
+}
+
+.nav--login a
+{
+  color: #A291C4;
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+.form
+{
+  padding: 0.5em;
+}
+
+.form label
+{
+  display: block;
+  margin-top: 0.5em;
+}
+
+.form input
+{
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.btn
+{
+  margin: 1em auto;
+  width: 95%;
+  padding: 10px;
+  background-color: #F4F4F4;
+  color: #B0ADB5;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.nav--login
+{
+  border-bottom: 2px solid #A291C4;
+  margin-bottom: 1em;
+}
+
+.nav
+{
+  background-color: #4B387A;
+  padding: 0.6em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 6em;
+}
+
+.nav a
+{
+  margin: 0 1em;
+  text-decoration: none;
+}
+
+a.loggedIn
+{
+  flex: 0 1 240px;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
