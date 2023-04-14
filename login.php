@@ -1,7 +1,7 @@
 <?php
 
-    function canLogin($username, $password){
-        if ($username === ninja && $email === 'ninja@ninja.be' && $password === 1234){
+    function canLogin($username, $email, $password){
+        if ($username === "ninja" && $email === 'ninja@ninja.be' && $password === "1234"){
             return true;
         }
         else{
@@ -14,7 +14,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        if (canLogin($username,$email, $password)){
+        if (canLogin($username, $email, $password)){
             //echo "You are logged in";
             session_start();
             $_SESSION['username'] = $username;
@@ -68,8 +68,8 @@
             <label for="password2">Password</label>
             <input type="password" id="password2">
             
-            <label for="email">Email</label>
-            <input type="text" id="email">
+            <label for="email2">Email</label>
+            <input type="text" id="email2">
         </div>
         
         <input type="submit" class="btn" value="Log In">

@@ -41,8 +41,8 @@
             <label for="password2">Password</label>
             <input type="password" id="password2">
             
-            <label for="email">Email</label>
-            <input type="text" id="email">
+            <label for="email2">Email</label>
+            <input type="text" id="email2">
         </div>
         
         <input type="submit" class="btn" value="Log In">
