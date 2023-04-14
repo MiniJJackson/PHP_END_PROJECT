@@ -1,7 +1,7 @@
 <?php
 
     function canLogin($username, $password){
-        if ($username === ninja && $email === ninja@ninja.be && $password === 1234){
+        if ($username === ninja && $email === 'ninja@ninja.be' && $password === 1234){
             return true;
         }
         else{
@@ -41,7 +41,7 @@
 </header>
 
 <div id="logSign">
-    <form action="login.php" method="get">
+    <form action="login.php" method="post">
         <h1>Log in to FairlyPrompt</h1>
         <nav class="nav--login">
             <a href="login.php" id="tabLogin">Log in</a>
