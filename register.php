@@ -21,8 +21,6 @@
             <a href="register.php" id="tabSignIn">Sign up</a>
         </nav>
     
-        <div class="alert hidden">That password was incorrect. Please try again</div>
-    
         <div class="form form--login">
             <label for="username">Username</label>
             <input type="text" id="username" name="username">
@@ -33,18 +31,11 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password">
         </div>
-        
-        <div class="form form--signup hidden">
-            <label for="username2">Username</label>
-            <input type="text" id="username2">
-        
-            <label for="password2">Password</label>
-            <input type="password" id="password2">
-            
-            <label for="email2">Email</label>
-            <input type="text" id="email2">
-        </div>
-        
+
+        <?php if (isset($error)): ?>
+            <div class="alert">The details where incorrect. Please try again</div>
+        <?php endif; ?>
+
         <input type="submit" class="btn" value="Log In">
     </form>
 </div>
