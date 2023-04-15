@@ -8,6 +8,15 @@
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT, $options);
         
         //echo $password;
+
+        $conn = new mysqli("localhost", "root", "root", "phpendproject");
+        $query = $conn->prepare("INSERT INTO users(`userName`, `email`, `password`) VALUES (:username, :email, :password)");
+        $query->bindvalue(":username", $username);
+        $query->bindvalue(":email", $email);
+        $query->bindvalue(":password", $password);   
+        $query->execute();
+     
+   
     }
 
 ?><!DOCTYPE html>
@@ -20,6 +29,7 @@
     <title>Log In to FairlyPrompt</title>
 </head>
 <body>
+
 <header>
  <!---include once moet hier komen -->
 
