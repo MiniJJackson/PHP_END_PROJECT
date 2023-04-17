@@ -20,6 +20,16 @@ body{
 /******* NAVIGATION *******/
 
 
+/*** HEADER ***/ 
+.loggedIn{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5em;
+    text-decoration: none;
+}
 
 /******* LOGIN SCREEN  *******/
 
@@ -66,7 +76,10 @@ h1{
 .form label
 {
   display: block;
-  margin-top: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-size: 1em;
+  font-weight: 600;
 }
 
 .form input
@@ -74,6 +87,8 @@ h1{
   width: 100%;
   padding: 10px;
   border-radius: 5px;
+  
+  border-color: #09ff67;
 }
 
 .btn
@@ -82,41 +97,19 @@ h1{
   width: 95%;
   padding: 10px;
   background-color: white;
-  color: #09ff67;
+  background-color: #09ff67;
   border-color: #09ff67;
   text-align: center;
   display: block;
   text-decoration: none;
   border-radius: 5px;
+  font-size: 1em;
+  font-weight: 600;
 }
 
 .nav--login
 {
-  border-bottom: 2px solid #A291C4;
+  border-bottom: 2px solid #09ff67;
   margin-bottom: 1em;
-}
-
-.nav
-{
-  background-color: #4B387A;
-  padding: 0.6em;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 6em;
-}
-
-.nav a
-{
-  margin: 0 1em;
-  text-decoration: none;
-}
-
-a.loggedIn
-{
-  flex: 0 1 240px;
-  margin-left: auto;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
 }
 
