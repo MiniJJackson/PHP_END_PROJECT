@@ -30,7 +30,7 @@
             //echo "You are logged in";
             session_start();
             $_SESSION['username'] = $username;
-            header("Location: fairly.php");
+            header("refresh:5; url=fairly.php");
         }
         else{
             //echo "You are not logged in";
@@ -51,6 +51,16 @@
 <header>
  <!---include once moet hier komen -->
 
+    <a href="#" class="loggedIn">
+        <div class="user--account">
+            <?php if(isset($_SESSION['username'])): ?>
+            <h3 class="user--name"><?php echo $username; ?></h3>
+            <?php else: ?>
+            <h3 class="user--name">Username here</h3>
+            <?php endif; ?>
+        </div>
+    </a>  
+    <a href="logout.php" class="loggedIn">Log out</a>
 </header>
 
 <div id="logSign">
