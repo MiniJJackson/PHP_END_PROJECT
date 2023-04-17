@@ -15,7 +15,6 @@
         $query->bindvalue(":email", $email);
         $query->bindvalue(":password", $password);   
         $query->execute();
-     
    
     }
 
