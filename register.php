@@ -1,6 +1,5 @@
 <?php
-
-    if (!empty($_POST)){
+    /*if (!empty($_POST)){
         $username = $_POST['username'];
         $email = $_POST['email'];
         $options = [
@@ -15,8 +14,33 @@
         $query->bindValue(":email", $email);
         $query->bindValue(":password", $password);   
         $query->execute();
-   
+    }*/
+
+    include_once(__DIR__ . "/classes/User.php");
+
+    if(!empty($_POST)){
+
+        try{
+            $user = new User();
+            $user->setUsername($_POST['username']);
+            $user->setEmail($_POST['email']);
+
+            $options = [
+                'cost' => 14,
+            ];
+            $user->setPassword(password_hash($_POST['password'],  PASSWORD_DEFAULT, $options));
+    
+            //echo $user->getUsername();
+    
+            $user->save();
+            $succes ="User saved succesfully";
+        }
+        catch(\Throwable $th){
+            $error = $th->getMessage();
+        }
+        
     }
+
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -35,6 +59,10 @@
 </header>
 
 <div id="logSign">
+    <?php if(isset($succes)): ?>
+        <div class="succes"><?php echo $succes; ?></div>
+    <?php endif; ?>
+
     <form action="register.php" method="post">
         <h1>Sign up for FairlyPrompt</h1>
         <nav class="nav--login">
@@ -57,7 +85,7 @@
             <div class="alert hidden">The details where incorrect. Please try again</div>
        
 
-        <input type="submit" class="btn" value="Sign up">
+        <input type="submit" class="btn" value="Sign me up">
     </form>
 </div>
 </body>
