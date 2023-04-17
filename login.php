@@ -1,7 +1,19 @@
 <?php
 
-    function canLogin($username, $email, $password){
-        if ($username === "ninja" && $email === 'ninja@ninja.be' && $password === "1234"){
+    function canLogin($username,/* $email, */ $password){
+        $conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
+        $statement = $conn->prepare("select * from users where username = :username");
+        $statement->bindValue(":username", $username);
+        $statement->execute();
+        $user = $statement->fetch();
+        /*var_dump($user);// test if a user excists
+        exit();*/
+        if (!$user){
+            return false;
+        }
+
+        $hash = $user['password'];
+        if( password_verify($password, $hash)){
             return true;
         }
         else{
@@ -11,13 +23,14 @@
 
     if (!empty($_POST)){
         $username = $_POST['username'];
-        $email = $_POST['email'];
+        /*$email = $_POST['email'];*/
         $password = $_POST['password'];
 
-        if (canLogin($username, $email, $password)){
+        if (canLogin($username, /*$email,*/ $password)){
             //echo "You are logged in";
             session_start();
             $_SESSION['username'] = $username;
+            header("Location: fairly.php");
         }
         else{
             //echo "You are not logged in";
@@ -52,8 +65,8 @@
             <label for="username">Username</label>
             <input type="text" id="username" name="username">
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email">
+            <!---<label for="email">Email</label>
+            <input type="email" id="email" name="email">--->
         
             <label for="password">Password</label>
             <input type="password" id="password" name="password">
