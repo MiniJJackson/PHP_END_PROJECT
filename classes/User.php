@@ -72,6 +72,7 @@ class User{
 
         public function save(){
             // conn
+            //$conn = Db::getConnection();
             $conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
             // insert query
             $statement = $conn->prepare("insert into users(`userName`, `email`, `password`) values (:username, :email, :password)");

@@ -1,7 +1,8 @@
 <?php
 
     function canLogin($username,/* $email, */ $password){
-        $conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
+        $conn = DB::getConnection();
+
         $statement = $conn->prepare("select * from users where username = :username");
         $statement->bindValue(":username", $username);
         $statement->execute();
