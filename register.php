@@ -1,7 +1,8 @@
 <?php
 
     if (!empty($_POST)){
-        $email = $_POST['username'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
         $options = [
             'cost' => 14,
         ];
@@ -9,11 +10,11 @@
         
         //echo $password;
 
-        $conn = new mysqli("localhost", "root", "root", "phpendproject");
-        $query = $conn->prepare("INSERT INTO users(`userName`, `email`, `password`) VALUES (:username, :email, :password)");
-        $query->bindvalue(":username", $username);
-        $query->bindvalue(":email", $email);
-        $query->bindvalue(":password", $password);   
+        $conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
+        $query = $conn->prepare("insert into users(`userName`, `email`, `password`) values (:username, :email, :password)");
+        $query->bindValue(":username", $username);
+        $query->bindValue(":email", $email);
+        $query->bindValue(":password", $password);   
         $query->execute();
    
     }
@@ -25,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 
-    <title>Log In to FairlyPrompt</title>
+    <title>Sign up to FairlyPrompt</title>
 </head>
 <body>
 
@@ -36,7 +37,7 @@
 
 <div id="logSign">
     <form action="register.php" method="post">
-        <h1>Sign uo for FairlyPrompt</h1>
+        <h1>Sign up for FairlyPrompt</h1>
         <nav class="nav--login">
             <a href="login.php" id="tabLogin">Log in</a>
             <a href="register.php" id="tabSignIn">Sign up</a>
