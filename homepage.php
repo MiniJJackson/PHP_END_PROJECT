@@ -19,7 +19,7 @@
 			<input type="text" placeholder="Search prompts...">
 		</div>
         <a href="#">My Prompts</a>
-		<a id="login" href="#">Login</a>
+		<a id="login" href="login.php">Login</a>
 	</nav>
 </header>
 
