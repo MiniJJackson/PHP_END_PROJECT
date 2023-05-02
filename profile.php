@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>My profile</title>
 </head>
 <body>
-    <h1 class="heading1">My profile</h1>
+
+<header>
+    <nav>
+		<div id="logo">FairlyPrompts</div>
+		<div id="searchbar">
+			<input type="text" placeholder="Search prompts...">
+		</div>
+        <a href="#">My Prompts</a>
+		<a id="login" href="#">Login</a>
+	</nav>
+</header>
 
     <div>
-        <img src="https://static.vecteezy.com/system/resources/previews/001/851/269/original/luxury-business-banner-background-free-vector.jpg" alt="Banner" class="banner">
+        <img src="https://www.trvst.world/wp-content/uploads/2022/02/black-and-white-color-quotes.jpg" alt="Banner" class="banner">
     </div>
 
     <div>
@@ -27,23 +39,6 @@
     <div>
         <a class="small-btn" href="edit-profile.php">Edit profile</a>
     </div>
-
-        <div class="heading2">
-        <h4 class="heading2-text">My prompts</h4>
-        </div>
-
-        <div class="prompts">
-        <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="prompts-image1">
-        <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="prompts-image2">
-        <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="prompts-image3">
-        <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="prompts-image4">
-        <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="prompts-image5">
-        <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="prompts-image6">
-        <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="prompts-image7">
-        <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="prompts-image8">
-        <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="prompts-image9">
-        <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="prompts-image10">
-        </div>
 
         <div class="heading3">
         <h4 class="heading2-text">My favorite prompts</h4>
