@@ -73,6 +73,13 @@
         </nav>
     
         <div class="form form--login">
+
+            <label for="firstname">First name</label>
+            <input type="text" id="firstname" name="firstname">
+
+            <label for="lastname">Last name</label>
+            <input type="text" id="lastname" name="lastname">
+
             <label for="username">Username</label>
             <input type="text" id="username" name="username">
 
