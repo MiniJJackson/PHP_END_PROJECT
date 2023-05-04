@@ -4,6 +4,8 @@ body {
 
 }
 
+/******* Profile *******/
+
 .profile-picture {
     width: 150px;
     height: 150px;
@@ -181,6 +183,8 @@ body {
     object-fit: cover;
 }
 
+/******* Navigation *******/
+
 nav {
     background-color: black;
     height: 50px;
@@ -238,6 +242,8 @@ nav #login {
     margin-right: 10px;
 }
 
+/******* Homepage *******/
+
 .homepageTitle {
     font-size: 32px;
     font-weight: bold;
@@ -284,4 +290,25 @@ nav #login {
     width: max-content;
     text-transform: uppercase;
     font-weight: bold;
+}
+
+/******* All prompts page *******/
+
+#filters {
+    width: 200px;
+    height: 100%;
+    padding-left: 15px;
+    float: left;
+    background-color: lightgray;
+}
+
+.titlesFilters {
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+#filters a {
+    text-decoration: none;
+    color: black;
 }
