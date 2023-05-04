@@ -106,10 +106,9 @@ body {
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 20px;
     grid-row-gap: 20px;
-    position: absolute;
     margin-top: 350px;
     margin-bottom: 20px;
-    left: 20%;
+    margin-left: 20%;
 }
 
 .favprompts-image1 {
