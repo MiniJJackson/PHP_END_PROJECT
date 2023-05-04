@@ -1,8 +1,118 @@
-body {
-	margin: 0;
-    font-family: 'Inter', sans-serif;
+/******* BASICS *******/
 
+*{
+    box-sizing: border-box;
 }
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: rgb(247, 242, 242);
+    font-family: 'Inter', sans-serif;
+}
+
+.hidden
+{
+  display: none;
+}
+
+/******* NAVIGATION *******/
+
+
+/*** HEADER ***/ 
+.loggedIn{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5em;
+    text-decoration: none;
+}
+
+/******* LOGIN SCREEN  *******/
+
+#logSign{
+    max-width: 500px;
+    margin: 2em auto;
+    background-color: white;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+h1{
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.alert{
+    background-color: #EFEEF1;
+    border: 1px solid #E91C24;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    margin: auto;
+    width: 90%;
+}
+
+
+.nav--login
+{
+  padding: 0.3em;
+}
+
+.nav--login a
+{
+  color: #09ff67;
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+.form
+{
+  padding: 0.5em;
+}
+
+.form label
+{
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.form input
+{
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  
+  border-color: #09ff67;
+}
+
+.btn
+{
+  margin: 1em auto;
+  width: 95%;
+  padding: 10px;
+  background-color: white;
+  background-color: #09ff67;
+  border-color: #09ff67;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.nav--login
+{
+  border-bottom: 2px solid #09ff67;
+  margin-bottom: 1em;
+}
+
+/******* Profile *******/
 
 .profile-picture {
     width: 150px;
@@ -106,10 +216,9 @@ body {
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 20px;
     grid-row-gap: 20px;
-    position: absolute;
     margin-top: 350px;
     margin-bottom: 20px;
-    left: 20%;
+    margin-left: 20%;
 }
 
 .favprompts-image1 {
@@ -182,7 +291,9 @@ body {
     object-fit: cover;
 }
 
-nav {
+/******* Navigation *******/
+
+header nav {
     background-color: black;
     height: 50px;
     display: flex;
@@ -191,7 +302,7 @@ nav {
     padding: 0 20px;
 }
 
-nav a {
+header nav a {
     color: white;
     text-decoration: none;
     margin-left: 10px;
@@ -201,7 +312,7 @@ nav a {
     text-transform: uppercase;
 }
 
-nav #logo {
+header nav #logo {
     margin-right: auto;
     font-size: 32px;
     color: white;
@@ -213,7 +324,7 @@ nav #logo {
     font-family: 'Bebas Neue', cursive;
 }
 
-nav #searchbar {
+header nav #searchbar {
     font-family: 'Inter', sans-serif;
     flex-grow: 1;
     margin: 0 20px;
@@ -225,7 +336,7 @@ nav #searchbar {
     padding: 0 10px;
 }
 
-nav #searchbar input[type="text"] {
+header nav #searchbar input[type="text"] {
     flex-grow: 1;
     border: none;
     background-color: transparent;
@@ -235,9 +346,11 @@ nav #searchbar input[type="text"] {
 
 }
 
-nav #login {
+header nav #login {
     margin-right: 10px;
 }
+
+/******* Homepage *******/
 
 .homepageTitle {
     font-size: 32px;
@@ -285,4 +398,25 @@ nav #login {
     width: max-content;
     text-transform: uppercase;
     font-weight: bold;
+}
+
+/******* All prompts page *******/
+
+#filters {
+    width: 200px;
+    height: 100%;
+    padding-left: 15px;
+    float: left;
+    background-color: lightgray;
+}
+
+.titlesFilters {
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+#filters a {
+    text-decoration: none;
+    color: black;
 }

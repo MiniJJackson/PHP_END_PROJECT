@@ -1,3 +1,9 @@
+<?php
+    include_once 'header.php'
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,19 +18,8 @@
 </head>
 <body>
 
-<header>
-    <nav>
-		<div id="logo">FairlyPrompts</div>
-		<div id="searchbar">
-			<input type="text" placeholder="Search prompts...">
-		</div>
-        <a href="#">My Prompts</a>
-		<a id="login" href="#">Login</a>
-	</nav>
-</header>
-
     <div>
-        <img src="https://www.trvst.world/wp-content/uploads/2022/02/black-and-white-color-quotes.jpg" alt="Banner" class="banner">
+        <img src="https://images.unsplash.com/photo-1488554378835-f7acf46e6c98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Banner" class="banner">
     </div>
 
     <div>

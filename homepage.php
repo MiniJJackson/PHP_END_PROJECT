@@ -1,3 +1,8 @@
+<?php
+    include_once 'header.php'
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,17 +16,6 @@
     <title>Homepage</title>
 </head>
 <body>
-
-<header>
-    <nav>
-		<div id="logo">FairlyPrompts</div>
-		<div id="searchbar">
-			<input type="text" placeholder="Search prompts...">
-		</div>
-        <a href="#">My Prompts</a>
-		<a id="login" href="login.php">Login</a>
-	</nav>
-</header>
 
 <section>
     <div>
@@ -50,6 +44,6 @@
             </div>
     </div>
 </section>
-<a href="#" class="a">Browse more</a>
+<a href="all-prompts.php" class="a">Browse more</a>
 </body>
 </html>
