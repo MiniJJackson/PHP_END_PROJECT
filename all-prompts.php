@@ -22,88 +22,545 @@
     <div id="filters">
         <div class="titlesFilters">Sort by</div>
         <ul>
-            <li><a href="#">Hottest</a></li>
-            <li><a href="#">Top</a></li>
-            <li><a href="#">Newest</a></li>
-            <li><a href="#">Oldest</a></li>
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Hottest   
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Top   
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Newest   
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Oldest   
+                </label>
+            </li>
+
         </ul>
+
         <div class="titlesFilters">Model</div>
         <ul>
-            <li><a href="#">All</a></li>
-            <li><a href="#">DALL-E</a></li>
-            <li><a href="#">Midjourney</a></li>
-            <li><a href="#">ChatGPT</a></li>
-            <li><a href="#">Stable Diffusion</a></li>
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    All   
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    DALL-E   
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Midjourney   
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    ChatGPT   
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Stable Diffusion   
+                </label>
+            </li>
+
         </ul>
+
         <div class="titlesFilters">Category</div>
         <ul>
-            <li><a href="#">All</a></li>
-            <li><a href="#">3D</a></li>
-            <li><a href="#">Accesory</a></li>
-            <li><a href="#">Ads</a></li>
-            <li><a href="#">Animal</a></li>
-            <li><a href="#">Anime</a></li>
-            <li><a href="#">Art</a></li>
-            <li><a href="#">Avatar</a></li>
-            <li><a href="#">Building</a></li>
-            <li><a href="#">Business</a></li>
-            <li><a href="#">Cartoon</a></li>
-            <li><a href="#">Chatbot</a></li>
-            <li><a href="#">Clothes</a></li>
-            <li><a href="#">Coach</a></li>
-            <li><a href="#">Code</a></li>
-            <li><a href="#">Conversion</a></li>
-            <li><a href="#">Copy</a></li>
-            <li><a href="#">Cute</a></li>
-            <li><a href="#">Drawing</a></li>
-            <li><a href="#">Email</a></li>
-            <li><a href="#">Fantasy</a></li>
-            <li><a href="#">Fashion</a></li>
-            <li><a href="#">Finance</a></li>
-            <li><a href="#">Fix</a></li>
-            <li><a href="#">Food</a></li>
-            <li><a href="#">Fun</a></li>
-            <li><a href="#">Funny</a></li>
-            <li><a href="#">Future</a></li>
-            <li><a href="#">Games</a></li>
-            <li><a href="#">Generation</a></li>
-            <li><a href="#">Graphic Design</a></li>
-            <li><a href="#">Health</a></li>
-            <li><a href="#">Icons</a></li>
-            <li><a href="#">Ideas</a></li>
-            <li><a href="#">Illustration</a></li>
-            <li><a href="#">Landscape</a></li>
-            <li><a href="#">Language</a></li>
-            <li><a href="#">Logo</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Mockup</a></li>
-            <li><a href="#">Monogram</a></li>
-            <li><a href="#">Music</a></li>
-            <li><a href="#">Nature</a></li>
-            <li><a href="#">NSFW</a></li>
-            <li><a href="#">Paiting</a></li>
-            <li><a href="#">Pattern</a></li>
-            <li><a href="#">People</a></li>
-            <li><a href="#">Photography</a></li>
-            <li><a href="#">Pixel Art</a></li>
-            <li><a href="#">Plan</a></li>
-            <li><a href="#">Product</a></li>
-            <li><a href="#">Prompts</a></li>
-            <li><a href="#">Psychedelic</a></li>
-            <li><a href="#">Scary</a></li>
-            <li><a href="#">Seo</a></li>
-            <li><a href="#">Social</a></li>
-            <li><a href="#">Space</a></li>
-            <li><a href="#">Sport</a></li>
-            <li><a href="#">Study</a></li>
-            <li><a href="#">Unique Style</a></li>
-            <li><a href="#">Summarise</a></li>
-            <li><a href="#">Synthwave</a></li>
-            <li><a href="#">Translate</a></li>
-            <li><a href="#">Travel</a></li>
-            <li><a href="#">Vehicle</a></li>
-            <li><a href="#">Wallpaper</a></li>
-            <li><a href="#">Writing</a></li>
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    All
+                </label>
+            </li>
+            
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    3D
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Accesory
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Ads
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Animal
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Anime
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Art
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Avatar
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Building
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Business
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Cartoon
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Chatbot
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Clothes
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Coach
+                </label>
+            </li>
+                    
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Code
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Conversion
+                </label>
+            </li>
+                    
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Copy
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Cute
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Drawing
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Email
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Fantasy
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Fashion
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Finance
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Fix
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Food
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Fun
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Funny
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Future
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Games
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Generation
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Graphic Design
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Health
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Icons
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Ideas
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Illustration
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Landscape
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Language
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Logo
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Marketing
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Mockup
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Monogram
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Music
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Nature
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    NSFW
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Paiting
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Pattern
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    People
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Photography
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Pixel Art
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Plan
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Product
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Prompts
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Psychedelic
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Scary
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Seo
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Social
+                </label>
+            </li>
+                    
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Space
+                </label>
+            </li>
+
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Sport
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Study
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Unique Style
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Summarise
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Synthwave
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Translate
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Travel
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Vehicle
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Wallpaper
+                </label>
+            </li>
+
+            <li>
+                <label>
+                    <input type="checkbox" class="checkbox" name="sort" unchecked>
+                    Writing
+                </label>
+            </li>
         </ul>
     </div>
 </aside>

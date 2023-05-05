@@ -7,7 +7,7 @@
 body{
     padding: 0;
     margin: 0;
-    background-color: rgb(247, 242, 242);
+    background-color: white;
     font-family: 'Inter', sans-serif;
 }
 
@@ -21,7 +21,7 @@ body{
 
 /*** HEADER ***/ 
 .loggedIn{
-    color: white;
+    color: black;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -35,7 +35,7 @@ body{
 #logSign{
     max-width: 500px;
     margin: 2em auto;
-    background-color: white;
+    background-color: black;
     padding: 1em;
     border-radius: 1em;
 }
@@ -43,6 +43,7 @@ body{
 h1{
     font-size: 1.2em;
     text-align: center;
+    color: white;
 }
 
 .alert{
@@ -62,9 +63,13 @@ h1{
 
 .nav--login a
 {
-  color: #09ff67;
-  text-decoration: none;
-  margin-right: 1em;
+    margin-right: 1em;
+    color: white;
+    background: rgb(249,211,113);
+    background: linear-gradient(90deg, rgba(249,211,113,1) 0%, rgba(244,115,64,1) 30%, rgba(239,47,136,1) 70%, rgba(136,67,242,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
 }
 
 .form
@@ -79,6 +84,7 @@ h1{
   margin-bottom: 0.5em;
   font-size: 1em;
   font-weight: 600;
+  color: white;
 }
 
 .form input
@@ -86,8 +92,8 @@ h1{
   width: 100%;
   padding: 10px;
   border-radius: 5px;
-  
-  border-color: #09ff67;
+  font-family: 'Inter', sans-serif;
+  border-color: black;
 }
 
 .btn
@@ -95,20 +101,21 @@ h1{
   margin: 1em auto;
   width: 95%;
   padding: 10px;
-  background-color: white;
-  background-color: #09ff67;
-  border-color: #09ff67;
+  background: rgb(249,211,113);
+  background: linear-gradient(90deg, rgba(249,211,113,1) 0%, rgba(244,115,64,1) 30%, rgba(239,47,136,1) 70%, rgba(136,67,242,1) 100%);
+  color: white;
   text-align: center;
   display: block;
   text-decoration: none;
   border-radius: 5px;
   font-size: 1em;
   font-weight: 600;
+  border-color: white;
 }
 
 .nav--login
 {
-  border-bottom: 2px solid #09ff67;
+  border-bottom: 2px solid white;
   margin-bottom: 1em;
 }
 
@@ -302,7 +309,7 @@ header nav {
     padding: 0 20px;
 }
 
-header nav a {
+header nav .nav-links {
     color: white;
     text-decoration: none;
     margin-left: 10px;
@@ -346,9 +353,6 @@ header nav #searchbar input[type="text"] {
 
 }
 
-header nav #login {
-    margin-right: 10px;
-}
 
 /******* Homepage *******/
 
@@ -357,6 +361,8 @@ header nav #login {
     font-weight: bold;
     margin-left: 20px;
     margin-top: 75px;
+    color: black;
+    text-align: unset;
 }
 
 .newestPrompts {
@@ -404,19 +410,47 @@ header nav #login {
 
 #filters {
     width: 200px;
-    height: 100%;
+    height: fit-content;
     padding-left: 15px;
     float: left;
-    background-color: lightgray;
+    background-color: black;
+    padding-bottom: 20px;
 }
+
+#filters ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
 .titlesFilters {
     font-size: 18px;
     margin-bottom: 10px;
     margin-top: 20px;
+    color: white;
 }
 
-#filters a {
-    text-decoration: none;
-    color: black;
+#filters label {
+    color: white;
 }
+
+.checkbox {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .checkbox:checked {
+    background: rgb(249,211,113);
+    background: linear-gradient(49deg, rgba(249,211,113,1) 0%, rgba(244,115,64,1) 30%, rgba(239,47,136,1) 70%, rgba(136,67,242,1) 100%);
+    border-color: white;
+  }
+  
+  .checkbox:focus {
+    box-shadow: 0 0 10px white;
+  }
