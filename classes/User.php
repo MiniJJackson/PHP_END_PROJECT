@@ -3,8 +3,11 @@
 
 class User{
         private $username;
+        private $firstname;
+        private $lastname;
         private $email;
         private $password;
+       
 
         
 
@@ -27,6 +30,45 @@ class User{
                 throw new Exception("Username can't be empty");
             }
             $this->username = $username;
+
+                return $this;
+        }
+                /**
+         * Get the value of firstname
+         */ 
+        public function getFirstname()
+        {
+                return $this->firstname;
+        }
+
+        /**
+         * Set the value of firstname
+         *
+         * @return  self
+         */ 
+        public function setFirstname($firstname)
+        {
+                $this->firstname = $firstname;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of lastname
+         */ 
+        public function getLastname()
+        {
+                return $this->lastname;
+        }
+
+        /**
+         * Set the value of lastname
+         *
+         * @return  self
+         */ 
+        public function setLastname($lastname)
+        {
+                $this->lastname = $lastname;
 
                 return $this;
         }
@@ -66,6 +108,9 @@ class User{
          */ 
         public function setPassword($password)
         {
+                if (strlen($password) < 5) {
+                        throw new Exception("Passwords must be longer than 5 characters.");
+                }
                 $this->password = $password;
 
                 return $this;
@@ -76,12 +121,20 @@ class User{
             $conn = Db::getInstance();
             //$conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
             // insert query
-            $statement = $conn->prepare("insert into users(`userName`, `email`, `password`) values (:username, :email, :password)");
+
+            $options = [
+                'cost' => 12
+                ];
+                
+            $password = password_hash($this->password, PASSWORD_BCRYPT, $options);
+            $statement = $conn->prepare("insert into users(`firstname`,`lastname`,`userName`, `email`, `password`) values (:firstname, :lastname, :username, :email, :password)");
             // return result
             $username = $this->getUsername();
             $email = $this->getEmail();
             $password = $this->getPassword();
 
+            $statement->bindValue(':firstname', $this->firstname);
+            $statement->bindValue(':lastname', $this->lastname);
             $statement->bindValue(":username", $this->username);
             $statement->bindValue(":email", $this->email);
             $statement->bindValue(":password", $this->password);
@@ -111,6 +164,8 @@ class User{
                 else{
                         return false;
                 }
+
+
         }
 
 

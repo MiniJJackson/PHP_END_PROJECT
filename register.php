@@ -20,25 +20,33 @@
 
     if(!empty($_POST)){
 
-        try{
+        try {
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $password2 = $_POST['password2'];
+        
             $user = new User();
-            $user->setUsername($_POST['username']);
-            $user->setEmail($_POST['email']);
-
-            $options = [
-                'cost' => 14,
-            ];
-            $user->setPassword(password_hash($_POST['password'],  PASSWORD_DEFAULT, $options));
-    
-            //echo $user->getUsername();
-    
-            $user->register();
-            $succes ="User saved succesfully";
-        }
-        catch(\Throwable $th){
-            //$error = $th->getMessage();
-            echo "error";
-        }
+        
+            $user->setEmail($email);
+            $user->setPassword($password);
+            $user->setFirstname($firstname);
+            $user->setLastname($lastname);
+            $user->setUsername($username);
+        
+            if ($user->canRegister($password)) {
+              echo "SESSION HAS STARTED";
+              session_start();
+              $_SESSION['user'] = $user->getEmail();
+              $user->register();
+              header("Location: fairly.php");
+            }
+          } catch (Throwable $error) {
+            // if any errors are thrown in the class, they can be caught here
+            $error = $error->getMessage();
+          }
         
     }
 
@@ -88,6 +96,9 @@
         
             <label for="password">Password</label>
             <input type="password" id="password" name="password">
+
+            <label for="password">Password</label>
+            <input type="password" id="password2" name="password2">
         </div>
 
         
