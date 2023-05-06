@@ -1,5 +1,5 @@
 <?php
-    $conn = new mysqli("localhost", "root", "root", "phpendproject");
+    self::$conn = new PDO('mysql:host=' . $config['db_host'] . ';dbname=' . $config['db_name'], $config['db_user'], $config['db_password']);
     $users = $conn->query("SELECT * FROM users");
 
 ?><!DOCTYPE html>

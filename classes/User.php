@@ -1,4 +1,5 @@
 <?php
+        include_once(__DIR__ . "/Db.php");
 
 class User{
         private $username;
@@ -70,10 +71,10 @@ class User{
                 return $this;
         }
 
-        public function save(){
+        public function register(){
             // conn
-            //$conn = Db::getConnection();
-            $conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
+            $conn = Db::getInstance();
+            //$conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
             // insert query
             $statement = $conn->prepare("insert into users(`userName`, `email`, `password`) values (:username, :email, :password)");
             // return result
@@ -90,4 +91,28 @@ class User{
 
         }
 }
+        function canLogin($username,/* $email, */ $password){   
+                $conn = Db::getInstance();
+
+                $statement = $conn->prepare("select * from users where username = :username");
+                $statement->bindValue(":username", $username);
+                $statement->execute();
+                $user = $statement->fetch();
+                /*var_dump($user);// test if a user excists
+                exit();*/
+                if (!$user){
+                return false;
+                }
+
+                $hash = $user['password'];
+                if( password_verify($password, $hash)){
+                        return true;
+                }
+                else{
+                        return false;
+                }
+        }
+
+
+
 ?>

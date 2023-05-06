@@ -32,11 +32,12 @@
     
             //echo $user->getUsername();
     
-            $user->save();
+            $user->register();
             $succes ="User saved succesfully";
         }
         catch(\Throwable $th){
-            $error = $th->getMessage();
+            //$error = $th->getMessage();
+            echo "error";
         }
         
     }
@@ -54,11 +55,10 @@
     <title>Sign up to FairlyPrompt</title>
 </head>
 <body>
+<?php
+    include_once 'header.php'
 
-<header>
- <!---include once moet hier komen -->
-
-</header>
+?>
 
 <div id="logSign">
     <?php if(isset($succes)): ?>

@@ -1,31 +1,13 @@
 <?php
 
-    function canLogin($username,/* $email, */ $password){
-        $conn = DB::getConnection();
-
-        $statement = $conn->prepare("select * from users where username = :username");
-        $statement->bindValue(":username", $username);
-        $statement->execute();
-        $user = $statement->fetch();
-        /*var_dump($user);// test if a user excists
-        exit();*/
-        if (!$user){
-            return false;
-        }
-
-        $hash = $user['password'];
-        if( password_verify($password, $hash)){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+  
 
     if (!empty($_POST)){
         $username = $_POST['username'];
         /*$email = $_POST['email'];*/
         $password = $_POST['password'];
+        
+        include_once(__DIR__ . "/classes/User.php");
 
         if (canLogin($username, /*$email,*/ $password)){
             //echo "You are logged in";
@@ -52,7 +34,10 @@
 </head>
 <body>
 <header>
- <!---include once moet hier komen -->
+<?php
+    include_once 'header.php'
+
+?>
 
     <a href="#" class="loggedIn">
         <div class="user--account">
