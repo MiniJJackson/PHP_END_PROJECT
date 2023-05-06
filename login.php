@@ -10,13 +10,13 @@
         include_once(__DIR__ . "/classes/User.php");
 
         if (canLogin($username, /*$email,*/ $password)){
-            //echo "You are logged in";
+            echo "You are logged in";
             session_start();
             $_SESSION['username'] = $username;
             header("refresh:5; url=fairly.php");
         }
         else{
-            //echo "You are not logged in";
+            echo "You are not logged in";
             $error = true;
         }
     }

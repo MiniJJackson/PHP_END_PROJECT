@@ -1,20 +1,4 @@
 <?php
-    /*if (!empty($_POST)){
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $options = [
-            'cost' => 14,
-        ];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT, $options);
-        //echo $password;
-
-        $conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
-        $query = $conn->prepare("insert into users(`userName`, `email`, `password`) values (:username, :email, :password)");
-        $query->bindValue(":username", $username);
-        $query->bindValue(":email", $email);
-        $query->bindValue(":password", $password);   
-        $query->execute();
-    }*/
 
     include_once(__DIR__ . "/classes/User.php");
 
@@ -35,18 +19,23 @@
             $user->setFirstname($firstname);
             $user->setLastname($lastname);
             $user->setUsername($username);
+
+            $succes ="User saved succesfully";
+            
         
-            if ($user->canRegister($password)) {
-              echo "SESSION HAS STARTED";
-              session_start();
-              $_SESSION['user'] = $user->getEmail();
-              $user->register();
-              header("Location: fairly.php");
-            }
-          } catch (Throwable $error) {
-            // if any errors are thrown in the class, they can be caught here
-            $error = $error->getMessage();
-          }
+            $options = [
+                'cost' => 14,
+            ];
+            $user->setPassword(password_hash($_POST['password'],  PASSWORD_DEFAULT, $options));
+    
+            //echo $user->getUsername();
+    
+            $user->register();
+            $succes ="User saved succesfully";
+        }
+        catch(\Throwable $th){
+            $error = $th->getMessage();
+        }
         
     }
 

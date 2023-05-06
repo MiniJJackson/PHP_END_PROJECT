@@ -9,8 +9,6 @@ class User{
         private $password;
        
 
-        
-
         /**
          * Get the value of username
          */ 
@@ -108,9 +106,7 @@ class User{
          */ 
         public function setPassword($password)
         {
-                if (strlen($password) < 5) {
-                        throw new Exception("Passwords must be longer than 5 characters.");
-                }
+              
                 $this->password = $password;
 
                 return $this;
@@ -126,7 +122,7 @@ class User{
                 'cost' => 12
                 ];
                 
-            $password = password_hash($this->password, PASSWORD_BCRYPT, $options);
+            //$password = password_hash($this->password, PASSWORD_BCRYPT, $options);
             $statement = $conn->prepare("insert into users(`firstname`,`lastname`,`userName`, `email`, `password`) values (:firstname, :lastname, :username, :email, :password)");
             // return result
             $username = $this->getUsername();
