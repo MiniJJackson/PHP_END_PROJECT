@@ -46,6 +46,9 @@ class User{
          */ 
         public function setFirstname($firstname)
         {
+                if (empty($firstname)) {
+                        throw new Exception("firstname cant be empty");
+                }
                 $this->firstname = $firstname;
 
                 return $this;
@@ -66,6 +69,9 @@ class User{
          */ 
         public function setLastname($lastname)
         {
+                if(empty($lastname)){
+                        throw new Exception("Lastname can't be empty");
+                }
                 $this->lastname = $lastname;
 
                 return $this;
@@ -86,6 +92,9 @@ class User{
          */ 
         public function setEmail($email)
         {
+                if (empty($email)) {
+                        throw new Exception("email cant be empty");
+                }
                 $this->email = $email;
 
                 return $this;
@@ -113,56 +122,83 @@ class User{
         }
 
         public function register(){
-            // conn
-            $conn = Db::getInstance();
-            //$conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
-            // insert query
+             // conn
+             $conn = Db::getConnection();
 
             $options = [
                 'cost' => 12
                 ];
-                
-            //$password = password_hash($this->password, PASSWORD_BCRYPT, $options);
-            $statement = $conn->prepare("insert into users(`firstname`,`lastname`,`userName`, `email`, `password`) values (:firstname, :lastname, :username, :email, :password)");
-            // return result
-            $username = $this->getUsername();
-            $email = $this->getEmail();
-            $password = $this->getPassword();
+            $password = password_hash($this->password, PASSWORD_BCRYPT, $options);
+           
+
+            $statement = $conn->prepare("insert into users(`firstname`,`lastname`,`username`, `email`, `password`) values (:firstname, :lastname, :username, :email, :password)");
 
             $statement->bindValue(':firstname', $this->firstname);
             $statement->bindValue(':lastname', $this->lastname);
-            $statement->bindValue(":username", $this->username);
-            $statement->bindValue(":email", $this->email);
-            $statement->bindValue(":password", $this->password);
+            $statement->bindValue(':username', $this->username);
+            $statement->bindValue(':email', $this->email);
+            $statement->bindValue(':password', $password); 
 
-            $result = $statement->execute();
-            return $result;
+            return $statement->execute();
 
         }
-}
-        function canLogin($username,/* $email, */ $password){   
-                $conn = Db::getInstance();
+
+        public function canRegister($password, $password2)
+        {
+                $conn = Db::getConnection();
+                $statement = $conn->prepare("select * from users where email = :email");
+                $statement->bindValue(":email", $this->email);
+                $statement->execute();
+                $user = ($statement->fetch());
+                if (!$user) {
+                        if ($password == $password2) {
+                                return true;
+                        } else {
+                                throw new Exception("wachtwoorden komen niet overeen");
+                                return false;
+                        }
+                } else {
+                        throw new Exception("gebruiker bestaat al");
+                        return false;
+                }
+        }
+
+        public function canLogin(){   
+                $conn = Db::getConnection();
 
                 $statement = $conn->prepare("select * from users where username = :username");
-                $statement->bindValue(":username", $username);
+                $statement->bindValue(":username", $this->username);
                 $statement->execute();
-                $user = $statement->fetch();
+                $user = ($statement->fetch());
                 /*var_dump($user);// test if a user excists
                 exit();*/
                 if (!$user){
-                return false;
+                        throw new Exception("User does not exist");
+                        return false;
                 }
 
-                $hash = $user['password'];
-                if( password_verify($password, $hash)){
+                $hash = $user["password"];
+                if( password_verify($this->password, $hash)){
                         return true;
                 }
                 else{
+                        throw new Exception("Wrong Password");
                         return false;
                 }
 
 
         }
+
+        public function __toString()
+        {
+                return $this->firstname . " " . $this->lastname . " " . $this->email . " " . $this->email;
+        }
+
+
+
+
+}
+      
 
 
 

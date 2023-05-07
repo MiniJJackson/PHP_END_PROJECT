@@ -1,23 +1,23 @@
 <?php
+    require_once 'bootstrap.php';
 
-  
-
-    if (!empty($_POST)){
-        $username = $_POST['username'];
-        /*$email = $_POST['email'];*/
-        $password = $_POST['password'];
-        
-        include_once(__DIR__ . "/classes/User.php");
-
-        if (canLogin($username, /*$email,*/ $password)){
-            echo "You are logged in";
-            session_start();
-            $_SESSION['username'] = $username;
-            header("refresh:5; url=fairly.php");
-        }
-        else{
-            echo "You are not logged in";
-            $error = true;
+    if (!empty($_POST)) {
+        try {
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+    
+            include_once(__DIR__ . "/classes/User.php");
+    
+            $user = new User();
+            $user->setUsername($username);
+            $user->setPassword($password);
+            if ($user->canLogin($username, $password)) {
+                session_start();
+                $_SESSION["user"] = $username;
+                header("refresh:5; url=homepage.php");
+            }
+        } catch (Throwable $th) {
+            $error = $th->getMessage();
         }
     }
 
@@ -36,7 +36,6 @@
 <header>
 <?php
     include_once 'header.php'
-
 ?>
 
     <a href="#" class="loggedIn">
@@ -68,6 +67,11 @@
         
             <label for="password">Password</label>
             <input type="password" id="password" name="password">
+
+            <input type="checkbox"></input>
+            <span>Remember me</span>
+
+            <!--<a href="resetpassword.php" id="forgotLink">Forgot password?</a><br>--->
         </div>
 
         <?php if (isset($error)): ?>

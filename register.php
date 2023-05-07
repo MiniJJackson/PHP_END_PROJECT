@@ -1,10 +1,13 @@
-<?php
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
+<?php
     include_once(__DIR__ . "/classes/User.php");
+    require_once("bootstrap.php");
 
     if(!empty($_POST)){
 
         try {
+            include_once("bootstrap.php");
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $username = $_POST['username'];
@@ -20,20 +23,19 @@
             $user->setLastname($lastname);
             $user->setUsername($username);
 
-            $succes ="User saved succesfully";
+           
             
-        
-            $options = [
-                'cost' => 14,
-            ];
-            $user->setPassword(password_hash($_POST['password'],  PASSWORD_DEFAULT, $options));
-    
-            //echo $user->getUsername();
-    
-            $user->register();
-            $succes ="User saved succesfully";
+            if ($user->canRegister($password, $password2)) {
+                echo "SESSION HAS STARTED";
+                session_start();
+                $_SESSION['user'] = $user->getUsername();
+                $user->register();
+                $succes ="User saved succesfully";
+                header("Location: homepage.php");
+            }
+            echo $user->getUsername();
         }
-        catch(\Throwable $th){
+        catch(Throwable $th){
             $error = $th->getMessage();
         }
         
@@ -52,10 +54,8 @@
     <title>Sign up to FairlyPrompt</title>
 </head>
 <body>
-<?php
-    include_once 'header.php'
 
-?>
+<?php include_once 'header.php'?>
 
 <div id="logSign">
     <?php if(isset($succes)): ?>
@@ -97,5 +97,7 @@
         <input type="submit" class="btn" value="Sign me up">
     </form>
 </div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>-->
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
-    include_once 'header.php'
+    include_once 'header.php';
 
+    include_once(__DIR__ . "/classes/User.php");
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +17,18 @@
     <title>Homepage</title>
 </head>
 <body>
+
+<!--- USER LOGGED IN ACCOUNT - NEED TO REDESIGN--->
+<a href="#" class="loggedIn">
+        <div class="user--account">
+            <?php if(isset($_SESSION['username'])): ?>
+            <h3 class="user--name"><?php echo $username; ?></h3>
+            <?php else: ?>
+            <h3 class="user--name">Username here</h3>
+            <?php endif; ?>
+        </div>
+    </a>  
+    <a href="logout.php" class="loggedIn">Log out</a>
 
 <section>
     <div>
