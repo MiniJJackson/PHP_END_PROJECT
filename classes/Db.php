@@ -3,7 +3,7 @@ abstract class Db
 {
     private static $conn;
 
-    public static function getInstance()
+    public static function getConnection()
     {
         if (self::$conn != null) {
             // connection found, return connection
