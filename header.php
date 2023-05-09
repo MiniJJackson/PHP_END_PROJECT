@@ -6,5 +6,6 @@
 		</div>
         <a class="nav-links">My Prompts</a>
 		<a class="nav-links" href="login.php">Login</a>
+		<a class="nav-links" href="register.php">Sign up</a>
 	</nav>
 </header>
