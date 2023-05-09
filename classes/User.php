@@ -189,6 +189,101 @@ class User{
 
         }
 
+        //CHECK IF STATEMENT IS CORRECT
+
+        public static function getUserFromEmail($email)
+        {
+                $conn = Db::getConnection();
+                $sql = "SELECT * FROM `users` WHERE `email` = '$email';";
+                $statement = $conn->prepare($sql);
+                $statement->execute();
+                $result = $statement->fetch();
+                return $result;
+        }
+
+
+        public static function changeCurrentPassword($currentpassword, $newpassword, $newpassword2, $email)
+        {
+
+
+                $conn = Db::getConnection();
+                $sql = "SELECT * FROM `users` WHERE `email` = '$email';";
+                $statement = $conn->prepare($sql);
+                $statement->execute();
+                $result = $statement->fetch();
+
+                $hash = $result["password"];
+                if (password_verify($currentpassword, $hash)) {
+                        if ($newpassword == $newpassword2) {
+                                $options = [
+                                        'cost' => 12
+                                ];
+                                $password = password_hash($newpassword, PASSWORD_BCRYPT, $options);
+                                $statement2 = $conn->prepare("UPDATE `users` SET `password` = '$password' WHERE `users`.`email` = '$email';");
+                                $statement2->execute();
+                        } else {
+                                throw new Exception("New passwords don't match");
+                        }
+                } else {
+                        throw new Exception("Old password is incorrect");
+                }
+
+        }
+
+        public static function updatePassword($token, $password)
+        {
+                $conn = Db::getConnection();
+                $sql = "SELECT * FROM `passwordreset` WHERE `token` = '$token';";
+                $statement = $conn->prepare($sql);
+                $statement->execute();
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+                $expFormat = mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y"));
+                $expDate = date("Y-m-d H:i:s", $expFormat);
+
+                if (!$result) {
+                        throw new Exception("Link is not usable");
+                }
+
+                $email = $result["email"];
+
+                if ($result["expiry_date"] < $expDate) {
+                        throw new Exception("Your link has been expired");
+                }
+
+                if (strlen($password) < 5) {
+                        throw new Exception("Passwords must be longer than 5 characters.");
+                }
+                $options = [
+                        'cost' => 12
+                ];
+                $password = password_hash($password, PASSWORD_BCRYPT, $options);
+                $statement2 = $conn->prepare("UPDATE `users` SET `password` = '$password' WHERE `users`.`email` = '$email';");
+                $statement2->execute();
+                $statement3 = $conn->prepare("DELETE FROM `passwordreset` WHERE `token` = '$token';");
+                $statement3->execute();
+        }
+
+        public static function passwordResetToken($token, $expDate, $email)
+        {
+                $conn = Db::getConnection();
+                $statement = $conn->prepare("INSERT INTO `passwordreset` (`token`, `expiry_date`, `email`) VALUES ('$token', '$expDate', :email);");
+                $statement->bindValue(":email", $email);
+                return $statement->execute();
+        }
+
+
+        // IS THIS NEEDED??
+        public static function getAll()
+        {
+                $conn = Db::getConnection();
+                $statement = $conn->prepare("SELECT email FROM users");
+                $statement->execute();
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+                return $result;
+        }
+
+
         public function __toString()
         {
                 return $this->firstname . " " . $this->lastname . " " . $this->email . " " . $this->email;
