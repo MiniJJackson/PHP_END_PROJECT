@@ -1,21 +1,4 @@
 <?php
-    /*if (!empty($_POST)){
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $options = [
-            'cost' => 14,
-        ];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT, $options);
-        //echo $password;
-
-        $conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
-        $query = $conn->prepare("insert into users(`userName`, `email`, `password`) values (:username, :email, :password)");
-        $query->bindValue(":username", $username);
-        $query->bindValue(":email", $email);
-        $query->bindValue(":password", $password);   
-        $query->execute();
-    }*/
-
     include_once(__DIR__ . "/classes/User.php");
 
     if(!empty($_POST)){
@@ -79,6 +62,13 @@
         </nav>
     
         <div class="form form--login">
+
+            <label for="firstname">First name</label>
+            <input type="text" id="firstname" name="firstname">
+
+            <label for="lastname">Last name</label>
+            <input type="text" id="lastname" name="lastname">
+
             <label for="username">Username</label>
             <input type="text" id="username" name="username">
 
