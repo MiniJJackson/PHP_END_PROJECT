@@ -1,4 +1,5 @@
 <?php
+  namespace MyApp;
     abstract class Db {
         private static $conn;
 
