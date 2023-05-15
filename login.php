@@ -1,42 +1,44 @@
 <?php
-
+  namespace MyApp;
+  use PDO;
+  include("classes/MyDb.php");
+  
     function canLogin($username,/* $email, */ $password){
-        $conn = DB::getConnection();
+        $db = new MyDb();
 
-        $statement = $conn->prepare("select * from users where username = :username");
-        $statement->bindValue(":username", $username);
-        $statement->execute();
-        $user = $statement->fetch();
-        /*var_dump($user);// test if a user excists
-        exit();*/
-        if (!$user){
-            return false;
-        }
+        $db->__construct();
+        $query = $db->prepare("SELECT * FROM gebruikers WHERE username = :username");
+        $query->bindParam(':username', $username, PDO::PARAM_STR);
+        $query->execute();
+        $db->close();
 
-        $hash = $user['password'];
-        if( password_verify($password, $hash)){
+        if ($query->rowCount() > 0) {
+          // The query returned results
+          $result = $query->fetch();
+          if (password_verify($password,$result['password'])) {
+            // Username and password are correct
+            session_start();
+            $_SESSION['username'] = $result['username'];
+            $_SESSION['role'] = $result['role'];
+            $_SESSION['user_id'] = $result['user_id'];
+            header("refresh:1; url=fairly.php");
             return true;
-        }
-        else{
-            return false;
+          } else {
+            // password incorrect!
+            $error = true;
+          }
+        } else {
+            // Username does not exist!
+            $error = true;
         }
     }
 
     if (!empty($_POST)){
-        $username = $_POST['username'];
-        /*$email = $_POST['email'];*/
-        $password = $_POST['password'];
+      $username = $_POST['username'];
+      /*$email = $_POST['email'];*/
+      $password = $_POST['password'];
 
-        if (canLogin($username, /*$email,*/ $password)){
-            //echo "You are logged in";
-            session_start();
-            $_SESSION['username'] = $username;
-            header("refresh:5; url=fairly.php");
-        }
-        else{
-            //echo "You are not logged in";
-            $error = true;
-        }
+      canLogin($username, /*$email,*/ $password);
     }
 
 ?><!DOCTYPE html>
@@ -52,6 +54,9 @@
 </head>
 <body>
 <header>
+<?php
+    include_once 'header.php'
+?>
  <!---include once moet hier komen -->
 
     <a href="#" class="loggedIn">

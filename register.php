@@ -19,16 +19,21 @@
     include_once(__DIR__ . "/classes/User.php");
 
     if(!empty($_POST)){
-
+      
         try{
             $user = new User();
             $user->setUsername($_POST['username']);
             $user->setEmail($_POST['email']);
+            $user->setLastname($_POST['lastname']);
+            $user->setFirstname($_POST['firstname']);
 
             $options = [
                 'cost' => 14,
             ];
             $user->setPassword(password_hash($_POST['password'],  PASSWORD_DEFAULT, $options));
+            /** het wachtwoord wordt hier gehashed voor dat het in het database wordt geplaatst */
+            /** "zet het password als volgende in de DB: wat je gekregen hebt uit post met 'password', hash deze met de default algo. van bcrypt, met als cost 14. */
+            /** md5 & sha1 = onveilig, kan gemakkelijk gekraakt worden met moderne software */
     
             //echo $user->getUsername();
     
@@ -37,6 +42,7 @@
         }
         catch(\Throwable $th){
             $error = $th->getMessage();
+            echo $error;
         }
         
     }

@@ -30,6 +30,50 @@ class User{
                 return $this;
         }
 
+        /** met een getter willen we eerst informatie krijgen, een setter zal dan de informatie "setten" in het huidig object (= $this) */
+
+        public function getLastname()
+        {
+                return $this->lastname;
+        }
+
+        /**
+         * Set the value of lastname
+         *
+         * @return  self
+         */ 
+
+        public function setLastname($lastname)
+        {
+            if(empty($lastname)){
+                throw new Exception("Lastname can't be empty");
+            }
+            $this->lastname = $lastname;
+
+                return $this;
+        }
+
+        public function getFirstname()
+        {
+                return $this->firstname;
+        }
+
+        /**
+         * Set the value of firstname
+         *
+         * @return  self
+         */ 
+
+        public function setFirstname($firstname)
+        {
+            if(empty($firstname)){
+                throw new Exception("Firstname can't be empty");
+            }
+            $this->firstname = $firstname;
+
+                return $this;
+        }
+
         /**
          * Get the value of email
          */ 
@@ -73,16 +117,17 @@ class User{
         public function save(){
             // conn
             //$conn = Db::getConnection();
-            $conn = new PDO('mysql:host=127.0.0.1;dbname=phpendproject',"root", "root");
+            $conn = new PDO('mysql:host=127.0.0.1;dbname=phptest',"root", "");
             // insert query
-            $statement = $conn->prepare("insert into users(`userName`, `email`, `password`) values (:username, :email, :password)");
+            
+            $statement = $conn->prepare("insert into gebruikers(`user_id`, `username`, `password`, `firstname`, `lastname`, `email`) values (:user_id, :username, :password, :firstname, :lastname, :email)");
             // return result
-            $username = $this->getUsername();
-            $email = $this->getEmail();
-            $password = $this->getPassword();
 
+            $statement->bindValue(":user_id", uniqid());
             $statement->bindValue(":username", $this->username);
             $statement->bindValue(":email", $this->email);
+            $statement->bindValue(":firstname", $this->firstname);
+            $statement->bindValue(":lastname", $this->lastname);
             $statement->bindValue(":password", $this->password);
 
             $result = $statement->execute();
