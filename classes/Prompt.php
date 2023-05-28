@@ -155,7 +155,7 @@ class Prompt {
       $conn = new PDO('mysql:host=127.0.0.1;dbname=phptest',"root", "");
       // insert query
       
-      $statement = $conn->prepare("insert into prompts(`name`, `cost`, `date`, `description`, `creator`, `id`, `created_at`, `category`, `model`) values (:name, :cost, :date, :description, :creator, :id, :created_at, :category, :model)");
+      $statement = $conn->prepare("insert into prompts(`name`, `cost`, `date`, `description`, `creator`, `approved`, `id`, `created_at`, `category`, `model`) values (:name, :cost, :date, :description, :creator, :approved, :id, :created_at, :category, :model)");
       // return result
 
       $statement->bindValue(":name", $this->name);
@@ -164,6 +164,7 @@ class Prompt {
       $statement->bindValue(":description", $this->description);
       $statement->bindValue(":creator", $this->creator);
       $statement->bindValue(":id", uniqid());
+      $statement->bindValue(":approved", 0);
       $statement->bindValue(":created_at", date('Y-m-d'));
       $statement->bindValue(":category", $this->category);
       $statement->bindValue(":model", $this->model);

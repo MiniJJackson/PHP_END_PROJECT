@@ -40,7 +40,7 @@
               $user->save();
               $succes ="User saved succesfully";
 
-              sendEmail($_POST['username'] . ' please activate your account','Your account is not activated yet, please click on this link: ' . 'http://localhost/UPDATEDPROJECTPHP/activateaccount.php?code=' . $useractivationcode . '&userid=' . $useruniqueid,$_POST['email']);
+              sendEmail($_POST['username'] . ' please activate your account','Your account is not activated yet, please click on this link: ' . 'http://172.162.242.96/PHP_END_PROJECT/activateaccount.php?code=' . $useractivationcode . '&userid=' . $useruniqueid,$_POST['email']);
               
           }
           catch(\Throwable $th){

@@ -24,7 +24,7 @@
       $query->execute([$userresetpassword, $currentdate, $result['user_id']]);
 
       //  header("refresh:5; url=login.php");
-      sendEmail('Password reset','Someone has requested a password reset link you have untill today to change your password before this code expires: ' . 'http://localhost/UPDATEDPROJECTPHP/resetpassword.php?code=' . $userresetpassword . '&userid=' . $result['user_id'],$_POST['email']);
+      sendEmail('Password reset','Someone has requested a password reset link you have untill today to change your password before this code expires: ' . 'http://172.162.242.96/PHP_END_PROJECT/resetpassword.php?code=' . $userresetpassword . '&userid=' . $result['user_id'],$_POST['email']);
     } else {
       $errormessage = 'No email found in our database!';
       $error = true;
