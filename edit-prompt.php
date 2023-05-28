@@ -2,7 +2,7 @@
     namespace MyApp;
     include_once(__DIR__ . "/classes/Prompt.php");
     include("classes/MyDb.php");
-    session_start();
+    include_once 'header.php';
     if (isset($_SESSION['username'])){
       
     $db = new MyDb();
@@ -23,8 +23,6 @@
         //echo "You are not logged in";
       header("Location: login.php");
     }
-
-
 ?>
 <?php
   // check if the form was submitted
@@ -58,18 +56,15 @@
 </head>
 <body>
 
-<header>
- <!---include once moet hier komen -->
-
-</header>
-<a id="home" href="my-prompt.php">my prompts</a>
-
 <div id="logSign">
     <?php if(isset($succes)): ?>
         <div class="succes"><?php echo $succes; ?></div>
     <?php endif; ?>
 
-    <form action="edit-prompt.php?id=<?php echo $prompt['id']; ?>" method="POST">
+    <form id="logSign" action="edit-prompt.php?id=<?php echo $prompt['id']; ?>" method="POST">
+    <h1 id="editTitle">Edit your prompt</h1>
+    <button class="goback" id="gobackEdit" onclick="history.back()">&lt; Go back</button>
+    <div id="editForm">
       <input type="hidden" name="id" value="<?php echo $prompt['id']; ?>">
       <label>Name:</label>
       <input type="text" name="prompt_name" value="<?php echo $prompt['name']; ?>">
@@ -79,7 +74,8 @@
       <input type="date" name="prompt_date" value="<?php echo $prompt['date']; ?>">
       <label>Cost:</label>
       <input type="text" name="prompt_cost" value="<?php echo $prompt['cost']; ?>">
-      <input type="submit" value="Save">
+    </div>
+      <input type="submit" id="editButton" class="btn" value="Save">
     </form>
 </div>
 </body>

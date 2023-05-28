@@ -2,44 +2,51 @@
   namespace MyApp;
   use PDO;
   include("classes/MyDb.php");
-  
-    function canLogin($username,/* $email, */ $password){
-        $db = new MyDb();
+  $errormessage = 'The details where incorrect. Please try again';
+  $error = false;
 
-        $db->__construct();
-        $query = $db->prepare("SELECT * FROM gebruikers WHERE username = :username");
-        $query->bindParam(':username', $username, PDO::PARAM_STR);
-        $query->execute();
-        $db->close();
+  if (!empty($_POST)){
+    $username = $_POST['username'];
+    /*$email = $_POST['email'];*/
+    $password = $_POST['password'];
 
-        if ($query->rowCount() > 0) {
-          // The query returned results
-          $result = $query->fetch();
-          if (password_verify($password,$result['password'])) {
-            // Username and password are correct
-            session_start();
-            $_SESSION['username'] = $result['username'];
-            $_SESSION['role'] = $result['role'];
-            $_SESSION['user_id'] = $result['user_id'];
-            header("refresh:1; url=fairly.php");
-            return true;
-          } else {
-            // password incorrect!
-            $error = true;
-          }
+    $db = new MyDb();
+    $db->__construct();
+    $query = $db->prepare("SELECT * FROM gebruikers WHERE username = :username");
+    $query->bindParam(':username', $username, PDO::PARAM_STR);
+    $query->execute();
+    $db->close();
+
+        
+
+    if ($query->rowCount() > 0) {
+      // The query returned results
+      $result = $query->fetch();
+      if($result['activated'] == 1){
+        if (password_verify($password,$result['password'])) {
+          $error = false;
+          // Username and password are correct
+          session_start();
+          $_SESSION['username'] = $result['username'];
+          $_SESSION['role'] = $result['role'];
+          $_SESSION['user_id'] = $result['user_id'];
+          header("refresh:1; url=homepage.php");
+          return true;
         } else {
-            // Username does not exist!
-            $error = true;
+          // password incorrect!
+          $errormessage = 'Password incorrect!';
+          $error = true;
         }
+      } else {
+        $errormessage = 'Your account is not activated yet, check your email!';
+        $error = true;
+      }
+    } else {
+      $errormessage = 'Username does not exist!';
+      // Username does not exist!
+      $error = true;
     }
-
-    if (!empty($_POST)){
-      $username = $_POST['username'];
-      /*$email = $_POST['email'];*/
-      $password = $_POST['password'];
-
-      canLogin($username, /*$email,*/ $password);
-    }
+  }
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -58,17 +65,6 @@
     include_once 'header.php'
 ?>
  <!---include once moet hier komen -->
-
-    <a href="#" class="loggedIn">
-        <div class="user--account">
-            <?php if(isset($_SESSION['username'])): ?>
-            <h3 class="user--name"><?php echo $username; ?></h3>
-            <?php else: ?>
-            <h3 class="user--name">Username here</h3>
-            <?php endif; ?>
-        </div>
-    </a>  
-    <a href="logout.php" class="loggedIn">Log out</a>
 </header>
 
 <div id="logSign">
@@ -89,11 +85,12 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password">
         </div>
-
-        <?php if (isset($error)): ?>
-            <div class="alert">The details where incorrect. Please try again</div>
+        <?php if (isset($error) && $error == true): ?>
+            <div class="alert"><?php echo $errormessage; ?></div>
         <?php endif; ?>
-        
+        <nav>
+            <a id="reset" href="user-resetpassword.php">Reset password</a>
+        </nav>
         <input type="submit" class="btn" value="Log In">
     </form>
 </div>

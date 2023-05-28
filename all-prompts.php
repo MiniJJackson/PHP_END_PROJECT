@@ -124,14 +124,13 @@
         </ul>
     </div>
 </aside>
-<a id="home" href="homepage.php">home</a>
-<div class="hottestPrompts" style="flex-wrap: wrap;">
+<div class="Prompts" id="AllPrompts">
   <?php foreach ($prompts as $prompt) { ?>
     
-    <div style="display: flex;flex-direction: column;width: 300px;" onclick="window.location.href='prompt.php?id=<?php echo $prompt['id']; ?>'">
-      <span><?php echo $prompt['name']; ?></span>
-      <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="promptsImage">
-      <span style=""><?php echo $prompt['description']; ?></span>
+    <div class="singlePrompt" onclick="window.location.href='prompt.php?id=<?php echo $prompt['id']; ?>'">
+      <span class="promptTitle"><?php echo $prompt['name']; ?></span>
+      <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="promptImg">
+      <span class="promptDescrip"><?php echo $prompt['description']; ?></span>
       <span>cost: <?php echo $prompt['cost']; ?></span>
       <span>Favorites: <?php echo (isset($favorites[$prompt['id']])) ? $favorites[$prompt['id']] : 0;  ?></span>
     </div>
@@ -143,15 +142,21 @@ let searchParams = new URLSearchParams(window.location.search);
 // FOR EACH FILTER PUT THE SELECTED ONE IN RED COLOR
 if(searchParams.get('catfilter') !== null) {
   let element = document.getElementById(searchParams.get('catfilter'));
-  element.style.color = 'red';
+  element.style.fontWeight = 'bold';
+  element.style.backgroundColor = 'white';
+  element.style.color = 'black';
 }
 if(searchParams.get('modelfilter') !== null) {
   let element = document.getElementById(searchParams.get('modelfilter'));
-  element.style.color = 'red';
+  element.style.fontWeight = 'bold';
+  element.style.backgroundColor = 'white';
+  element.style.color = 'black';
 }
 if(searchParams.get('sortfilter') !== null) {
   let element = document.getElementById(searchParams.get('sortfilter'));
-  element.style.color = 'red';
+  element.style.fontWeight = 'bold';
+  element.style.backgroundColor = 'white';
+  element.style.color = 'black';
 }
 if(searchParams.get('searchbarfilter') !== null) {
   let element = document.getElementById('searchbarinput');

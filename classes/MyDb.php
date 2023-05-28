@@ -1,9 +1,8 @@
 <?php
   namespace MyApp;
   use PDO;
-  include("classes/Db.php");
   
-  class MyDb extends Db {
+  class MyDb {
     protected $connection;
 
     public function __construct() {

@@ -1,33 +1,58 @@
 <?php
+    namespace MyApp;
+    include("classes/MyDb.php");
     include_once(__DIR__ . "/classes/User.php");
+    include_once(__DIR__ . "/services/email.php");
+    $errormessage = 'Something went wrong!';
+    $haserror = false;
 
     if(!empty($_POST)){
-      
-        try{
-            $user = new User();
-            $user->setUsername($_POST['username']);
-            $user->setEmail($_POST['email']);
-            $user->setLastname($_POST['lastname']);
-            $user->setFirstname($_POST['firstname']);
+        $db = new MyDb();
 
-            $options = [
-                'cost' => 14,
-            ];
-            $user->setPassword(password_hash($_POST['password'],  PASSWORD_DEFAULT, $options));
-            /** het wachtwoord wordt hier gehashed voor dat het in het database wordt geplaatst */
-            /** "zet het password als volgende in de DB: wat je gekregen hebt uit post met 'password', hash deze met de default algo. van bcrypt, met als cost 14. */
-            /** md5 & sha1 = onveilig, kan gemakkelijk gekraakt worden met moderne software */
-    
-            //echo $user->getUsername();
-    
-            $user->save();
-            $succes ="User saved succesfully";
+        $db->__construct();
+        $query = "SELECT * FROM gebruikers WHERE email = ? OR username = ?";
+        $query = $db->prepare($query);
+        $query->execute([$_POST['email'], $_POST['username']]);
+
+          if ($query->rowCount() <= 0) {
+            try{
+              $useractivationcode = randomString(128);
+              $useruniqueid = uniqid();
+              $user = new User();
+              $user->setUserid($useruniqueid);
+              $user->setUsername($_POST['username']);
+              $user->setEmail($_POST['email']);
+              $user->setLastname($_POST['lastname']);
+              $user->setFirstname($_POST['firstname']);
+              $user->setActivationcode($useractivationcode);
+
+
+              $options = [
+                  'cost' => 14,
+              ];
+              $user->setPassword(password_hash($_POST['password'],  PASSWORD_DEFAULT, $options));
+              /** het wachtwoord wordt hier gehashed voor dat het in het database wordt geplaatst */
+              /** "zet het password als volgende in de DB: wat je gekregen hebt uit post met 'password', hash deze met de default algo. van bcrypt, met als cost 14. */
+              /** md5 & sha1 = onveilig, kan gemakkelijk gekraakt worden met moderne software */
+      
+              //echo $user->getUsername();
+      
+              $user->save();
+              $succes ="User saved succesfully";
+
+              sendEmail($_POST['username'] . ' please activate your account','Your account is not activated yet, please click on this link: ' . 'http://localhost/UPDATEDPROJECTPHP/activateaccount.php?code=' . $useractivationcode . '&userid=' . $useruniqueid,$_POST['email']);
+              
+          }
+          catch(\Throwable $th){
+              $error = $th->getMessage();
+              $errormessage = $error;
+              $haserror = true;
+          }
+        } else {
+          // email already used..
+          $errormessage = 'Email or username already in use!';
+          $haserror = true;
         }
-        catch(\Throwable $th){
-            $error = $th->getMessage();
-            echo $error;
-        }
-        
     }
 
 
@@ -80,7 +105,9 @@
         </div>
 
         
-            <div class="alert hidden">The details where incorrect. Please try again</div>
+        <?php if (isset($haserror) && $haserror == true): ?>
+            <div class="alert"><?php echo $errormessage; ?></div>
+        <?php endif; ?>
        
 
         <input type="submit" class="btn" value="Sign me up">

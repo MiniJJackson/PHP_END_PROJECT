@@ -1,6 +1,6 @@
 <?php
     include_once(__DIR__ . "/classes/Prompt.php");
-    session_start();
+    include_once("header.php");
     if (isset($_SESSION['username'])){
       if(!empty($_POST)){
       
@@ -44,12 +44,6 @@
 </head>
 <body>
 
-<header>
- <!---include once moet hier komen -->
-
-</header>
-<a id="home" href="my-prompt.php">my prompts</a>
-
 <div id="logSign">
     <?php if(isset($succes)): ?>
         <div class="succes"><?php echo $succes; ?></div>
@@ -57,6 +51,7 @@
 
     <form action="create-prompt.php" method="post">
         <h1>Create prompt for FairlyPrompt</h1>
+        <button class="goback" id="gobackCreate" onclick="history.back()">&lt; Go back</button>
     
         <div class="form form--login">
 
@@ -66,16 +61,16 @@
             <label for="cost">Cost</label>
             <input type="text" id="cost" name="cost">
 
-            <label for="date">date</label>
+            <label for="date">Date</label>
             <input type="date" id="date" name="date">
 
             <label for="description">Description</label>
             <input type="text" id="description" name="description">
 
-            <label for="category">category</label>
+            <label for="category">Category</label>
             <input type="text" id="category" name="category">
 
-            <label for="model">model</label>
+            <label for="model">Model</label>
             <input type="text" id="model" name="model">
         </div>
 

@@ -1,7 +1,7 @@
 <?php
     namespace MyApp;
     include("classes/MyDb.php");
-    session_start();
+    include_once 'header.php';
       
     $db = new MyDb();
 
@@ -38,18 +38,26 @@
 <body>
 
 <section>
-  <a id="home" href="homepage.php">home</a>
     <div>
-        <h1 class="homepageTitle">username: <?php echo $user['username']; ?></h1>
-        
-        <div class="hottestPrompts">
+        <img src="https://images.unsplash.com/photo-1488554378835-f7acf46e6c98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Banner" class="banner">
+    </div>
+
+<div>
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="profile-picture">
+        <div class="info">
+        <h3 class="full-name">&#64;<?php echo $user['username']; ?></h2>
+        </div>
+    </div>
+
+    <div>
+        <div id="userPrompts" class="Prompts">
         <?php foreach ($prompts as $prompt) { ?>
             
-            <div style="display: flex;flex-direction: column;">
+          <div class="singlePrompt">
 
-              <span><?php echo $prompt['name']; ?></span>
-              <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="promptsImage">
-              <span><?php echo $prompt['description']; ?></span>
+            <span class="promptTitle"><?php echo $prompt['name']; ?></span>
+            <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="promptImg">
+            <span class="promptDescrip"><?php echo $prompt['description']; ?></span>
             </div>
           <?php } ?>
         </div>

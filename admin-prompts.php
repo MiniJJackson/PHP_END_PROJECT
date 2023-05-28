@@ -33,6 +33,15 @@
     $query = "UPDATE prompts SET approved = 1 WHERE id = '$prompt_id'";
     $query = $db->prepare($query);
     $query->execute();
+
+    $query = "SELECT * FROM prompts WHERE id = '$prompt_id'";
+    $query = $db->prepare($query);
+    $query->execute();
+    $result = $query->fetch();
+
+    $query = "UPDATE gebruikers SET credits = credits + 10 WHERE user_id = ?";
+    $query = $db->prepare($query);
+    $query->execute([$result['creator']]);
     $db->close();
   }
 ?>
@@ -52,21 +61,20 @@
 <body>
 
 <section>
-  <a id="home" href="homepage.php">home</a>
     <div>
-        <h1 class="homepageTitle">Not approved prompts</h1>
+        <h1 class="Titles">Not approved prompts</h1>
         
-        <div class="hottestPrompts">
+        <div class="Prompts">
           <?php foreach ($prompts as $prompt) { ?>
             
-            <div style="display: flex;flex-direction: column;">
+            <div class="singlePrompt">
 
-              <span><?php echo $prompt['name']; ?></span>
-              <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="promptsImage">
-              <span><?php echo $prompt['description']; ?></span>
+              <span class="promptTitle"><?php echo $prompt['name']; ?></span>
+              <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="promptImg" class="promptsImage">
+              <span class="promptDescrip"><?php echo $prompt['description']; ?></span>
                   <form method="post" action="admin-prompts.php">
                     <input type="hidden" name="prompt_id" value="<?php echo $prompt['id']; ?>">
-                    <input type="submit" value="Approve">
+                    <input class="btn" type="submit" value="Approve">
                   </form>
             </div>
           <?php } ?>

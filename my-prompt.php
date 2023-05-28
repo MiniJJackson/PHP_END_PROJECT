@@ -37,20 +37,20 @@
 <body>
 
 <section>
-  <a id="home" href="create-prompt.php">Create prompt</a>
-  <p></p>
-  <a id="home" href="homepage.php">home</a>
     <div>
-        <h1 class="homepageTitle">My prompts</h1>
+        <div id="titleAndButton">
+        <h1 class="Titles">My prompts</h1>
+        <a class="a" id="createPrompt" href="create-prompt.php">Create prompt</a>
+        </div>
         
-        <div class="hottestPrompts">
+        <div class="Prompts">
           <?php foreach ($prompts as $prompt) { ?>
             
-            <div style="display: flex;flex-direction: column;">
+            <div class="singlePrompt">
 
-              <span><?php echo $prompt['name']; ?></span>
-              <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="promptsImage">
-              <span><?php echo $prompt['description']; ?></span>
+              <span class="promptTitle"><?php echo $prompt['name']; ?></span>
+              <img src="https://www.humanesociety.org/sites/default/files/2022-08/hl-yp-cats-579652.jpg" alt="cat" class="promptsImg">
+              <span class="promptDescrip"><?php echo $prompt['description']; ?></span>
               <span>approved: <?php echo $prompt['approved'] ? 'yes (editing approved prompts, will need re-approval)': 'no'; ?></span>
               <a href="edit-prompt.php?id=<?php echo $prompt['id']; ?>">Edit</a>
             </div>
